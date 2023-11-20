@@ -29,10 +29,10 @@ clear
 
 | Problem | Status | Comment
 | --- | :---: | --- |
-| Problem 1 | - | |
-| Problem 2 | - | |
-| Problem 3 | - | |
+| [Problem 1][i1] | - | |
+| [Problem 2][i2] | - | |
+| [Problem 3][i3] | - | |
 
-<!-- [i1]: https://github.com/alonso-herreros/uni-sysarch-lab9/issues/1
+[i1]: https://github.com/alonso-herreros/uni-sysarch-lab9/issues/1
 [i2]: https://github.com/alonso-herreros/uni-sysarch-lab9/issues/2
-[i3]: https://github.com/alonso-herreros/uni-sysarch-lab9/issues/3 -->
+[i3]: https://github.com/alonso-herreros/uni-sysarch-lab9/issues/3
