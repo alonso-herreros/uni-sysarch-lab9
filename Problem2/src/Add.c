@@ -5,9 +5,9 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#define IP SIZE 20
-#define MAC SIZE 20
-#define TRACE printf("%s:%d\n",__FILE__,__LINE__)
+#define IP_SIZE 20
+#define MAC_SIZE 20
+#define TRACE printf("%s:%d\n", __FILE__, __LINE__)
 
 #define FILE_NAME "Nodes.dat"
 
