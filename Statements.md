@@ -141,7 +141,7 @@ The first pirated piece is the header of the Add.c file:
 
 #define IP SIZE 20
 #define MAC SIZE 20
-#define TRACE printf("%s:%d\n",__FILE_
+#define TRACE printf("%s:%d\n",__FILE__,__LINE__)
 
 #define FILE_NAME "Nodes.dat"
 ```
