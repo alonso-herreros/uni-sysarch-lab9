@@ -67,6 +67,15 @@ Node *New_node(const char *ip, const char *mac) // Initial code
     return (p_node);
 }
 
+Node *Add(Node *p_first, Node *p_node)
+{
+    if (p_first == NULL)  return p_node; // Empty list case
+
+    Node *curr;
+    for (curr = p_first; curr->next != NULL; curr = curr->next);
+    curr->next = p_node;
+    return p_first;
+}
 
 
 Node *Read(const char *file_name)
