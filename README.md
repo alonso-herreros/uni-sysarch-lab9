@@ -30,7 +30,7 @@ clear
 | Problem | Status | Comment
 | --- | :---: | --- |
 | [Problem 1][i1] | Done | |
-| [Problem 2][i2] | Done | Execute with arguments `147.6.170.251` `FB:7D:30:22:30:3C` |
+| [Problem 2][i2] | Started | Execute with arguments `147.6.170.251` `FB:7D:30:22:30:3C` |
 | [Problem 3][i3] | - | |
 
 [i1]: https://github.com/alonso-herreros/uni-sysarch-lab9/issues/1
