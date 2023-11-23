@@ -31,6 +31,11 @@ void Save(Node *p_first, const char *file_name);
 void Display(Node *p_first);
 void Destroy(Node *p_first);
 
+void Parent_handler();
+
+void Child_process();
+void Child_handler();
+
 
 static volatile int keep_alive = 1;
 static volatile int displayed = 0;
