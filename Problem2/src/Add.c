@@ -31,10 +31,10 @@ void Save(Node *p_first, const char *file_name);
 void Display(Node *p_first);
 void Destroy(Node *p_first);
 
-void Parent_handler();
+void Parent_handler(int sig);
 
 void Child_process();
-void Child_handler();
+void Child_handler(int sig);
 
 
 static volatile int keep_alive = 1;
