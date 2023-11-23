@@ -160,13 +160,15 @@ void Parent_handler(int sig) {
 
 void Child_handler(int sig) {
     switch (sig) {
-    case SIGUSR1:
-        Node *p_first = Read(FILE_NAME);
-        Display(p_first);
-        Destroy(p_first);
-        kill(getppid(), SIGUSR1);
-        break;
-    case SIGINT:
-        keep_alive = 0; // Don't want to interrupt other things
+        case SIGUSR1: {
+            Node *p_first = Read(FILE_NAME);
+            Display(p_first);
+            Destroy(p_first);
+            kill(getppid(), SIGUSR1);
+            break;
+        }
+        case SIGINT:{
+            keep_alive = 0; // Don't want to interrupt other things
+        }
     }
 }
