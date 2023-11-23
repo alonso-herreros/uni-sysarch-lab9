@@ -138,6 +138,14 @@ void Destroy(Node *p_first)
 }
 
 
+void Child_process() {
+    signal(SIGUSR1, Child_handler);
+    signal(SIGINT, Child_handler);
+    while (keep_alive);
+    exit(EXIT_SUCCESS);
+}
+
+
 void Parent_handler(int sig) {
     if (sig == SIGUSR1) {
         displayed = 1;
