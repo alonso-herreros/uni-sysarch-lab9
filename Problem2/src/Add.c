@@ -33,6 +33,7 @@ void Destroy(Node *p_first);
 
 
 static volatile int keep_alive = 1;
+static volatile int displayed = 0;
 
 
 int main(int ac, char **av) // Initial code
@@ -136,6 +137,12 @@ void Destroy(Node *p_first)
     }
 }
 
+
+void Parent_handler(int sig) {
+    if (sig == SIGUSR1) {
+        displayed = 1;
+    }
+}
 
 
 void Child_handler(int sig) {
