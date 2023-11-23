@@ -44,17 +44,36 @@ static volatile int displayed = 0;
 
 int main(int ac, char **av) // Initial code
 {
-    Node *p_first = NULL;
-    Node *p_node;
     Verify_args(ac, av);
 
-    p_first = Read(FILE_NAME);
-    Display(p_first);
-    p_node = New_node(av[1], av[2]);
-    p_first = Add(p_first, p_node);
-    Display(p_first);
+    signal(SIGUSR1, Parent_handler);
+
+    pid_t pid;
+    if ((pid = fork()) == -1)  exit(EXIT_FAILURE);
+    else if (pid == 0)  Child_process();
+    sleep(1);
+
+    displayed = 0;
+    kill(pid, SIGUSR1);
+    while(!displayed);
+
+    Node *p_first = Read(FILE_NAME);
+    p_first = Add(p_first, New_node(av[1], av[2]));
     Save(p_first, FILE_NAME);
     Destroy(p_first);
+
+    displayed = 0;
+    kill(pid, SIGUSR1);
+    while(!displayed);
+
+    kill(pid, SIGINT);
+    int status;
+    pid = wait(&status);
+    if (status)  {
+        fprintf(stderr, "Process %d terminated with error: %d\n", pid, status);
+        exit(EXIT_FAILURE);
+    }
+    exit(EXIT_SUCCESS);
 }
 
 
