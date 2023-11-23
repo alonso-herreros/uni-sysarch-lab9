@@ -122,3 +122,13 @@ void Display(Node *p_first) // Initial code
     puts("-------------------------");
 }
 
+void Destroy(Node *p_first)
+{
+    Node *curr = p_first;
+    Node *next = NULL;
+    while (curr != NULL) {
+        next = curr->next;
+        free(curr);
+        curr = next;
+    }
+}
