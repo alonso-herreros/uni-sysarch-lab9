@@ -161,7 +161,7 @@ void Parent_handler(int sig) {
 void Child_handler(int sig) {
     switch (sig) {
     case SIGUSR1:
-        p_first = Read(FILE_NAME);
+        Node *p_first = Read(FILE_NAME);
         Display(p_first);
         Destroy(p_first);
         kill(getppid(), SIGUSR1);
