@@ -32,6 +32,9 @@ void Display(Node *p_first);
 void Destroy(Node *p_first);
 
 
+int keep_alive = 1;
+
+
 int main(int ac, char **av) // Initial code
 {
     Node *p_first = NULL;
@@ -130,5 +133,19 @@ void Destroy(Node *p_first)
         next = curr->next;
         free(curr);
         curr = next;
+    }
+}
+
+
+
+void Child_handler(int sig) {
+    switch (sig) {
+    case SIGUSR1:
+        p_first = Read(FILE_NAME);
+        Display(p_first);
+        Destroy(p_first);
+        break;
+    case SIGINT:
+        keep_alive = 0; // Don't want to interrupt other things
     }
 }
