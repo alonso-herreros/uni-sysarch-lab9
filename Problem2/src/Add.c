@@ -32,7 +32,7 @@ void Display(Node *p_first);
 void Destroy(Node *p_first);
 
 
-int keep_alive = 1;
+static volatile int keep_alive = 1;
 
 
 int main(int ac, char **av) // Initial code
