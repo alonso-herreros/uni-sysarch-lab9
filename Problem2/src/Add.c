@@ -86,7 +86,10 @@ Node *Read(const char *file_name)
     FILE *f = fopen(file_name, "rb");
     while (!feof(f)) {
         Node *node = (Node *) malloc(sizeof(Node));
-        if (fread(node, sizeof(Node), 1, f) < 1)  continue;
+        if (fread(node, sizeof(Node), 1, f) < 1) {
+            free(node);
+            continue;
+        }
         node->next = NULL;
         head = Add(head, node);
     }
