@@ -9,10 +9,9 @@
 #define MAC_SIZE 20
 #define TRACE printf("%s:%d\n", __FILE__, __LINE__)
 
-#define FILE_NAME "Nodes.dat"
+#define FILE_NAME "tmp/Nodes.dat"
 
-
-typedef struct Node //Initial code
+typedef struct Node // Initial code
 {
     char ip[IP_SIZE];
     char mac[MAC_SIZE];
@@ -58,16 +57,30 @@ void Verify_args(int ac, char **av) // Initial code
     }
 }
 
-Node *New_node(const char *ip, const char *mac)
+
+Node *New_node(const char *ip, const char *mac) // Initial code
 {
-    Node *p_node = malloc(sizeof(Node));
+    Node *p_node = (Node *) malloc(sizeof(Node));
     strncpy(p_node->ip, ip, IP_SIZE);
     strncpy(p_node->mac, mac, MAC_SIZE);
     p_node->next = NULL;
     return (p_node);
 }
 
-void Display(Node *p_first)
+
+void Save(Node *p_first, const char *file_name) // Initial code
+{
+    FILE *f = fopen(file_name, "wb");
+    if (p_first != NULL)
+    {
+        for (Node *p = p_first; p; p = p->next)
+            fwrite(p, sizeof(Node), 1, f);
+    }
+    fclose(f);
+}
+
+
+void Display(Node *p_first) // Initial code
 {
     puts("--------Node list----------");
     if (p_first == NULL)
@@ -80,13 +93,3 @@ void Display(Node *p_first)
     puts("-------------------------");
 }
 
-void Save(Node *p_first, const char *file_name)
-{
-    FILE *f = fopen(file_name, "wb");
-    if (p_first != NULL)
-    {
-        for (Node *p = p_first; p; p = p->next)
-            fwrite(p, sizeof(Node), 1, f);
-    }
-    fclose(f);
-}
